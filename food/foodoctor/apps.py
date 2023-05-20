@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class FooddoctorConfig(AppConfig):
+class FoodoctorConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'foodoctor'
