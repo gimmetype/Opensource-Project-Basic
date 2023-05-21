@@ -27,6 +27,14 @@ class BusinessHours(models.Model):
         abstract = True
 
 
+class Keyword(models.Model):
+    text = models.TextField()
+    count = models.IntegerField()
+
+    class Meta:
+        abstract = True
+
+
 class Restaurant(models.Model):
     _id = models.ObjectIdField()
     name = models.TextField()
@@ -41,6 +49,9 @@ class Restaurant(models.Model):
     category = models.TextField()
     menu = models.ArrayField(
         model_container=Menu,
+    )
+    keyword = models.ArrayField(
+        model_container=Keyword
     )
     rating = models.DecimalField(max_digits=3, decimal_places=2)
     last_updated = models.DateField(auto_now=True)
