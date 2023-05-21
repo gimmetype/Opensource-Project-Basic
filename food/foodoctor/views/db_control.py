@@ -4,6 +4,16 @@ from django.shortcuts import render
 from ..models import Restaurant
 
 
+'''
+첫번째 인자 e : 형변환 대상 객체
+두번째 인자 _type : casting 할 type
+
+return 은 형변환된 객체를 반환
+이때, 형변환에 실패하면 e를 그대로 반환한다
+
+ex) type_casting('421', int) -> 421
+type_casting('42~45', int) -> '42~45': str
+'''
 def type_casting(e, _type):
     try:
         e = _type(e)
@@ -15,7 +25,13 @@ def type_casting(e, _type):
         return e
 
 
-def temp(request):
+'''
+json 으로 식당 정보들을 받고
+db에 추가
+
+현재 json 파일에 대한 path 지정 필요
+'''
+def insert_restaurant_data(request):
     from decimal import Decimal
     from datetime import time
     import json
@@ -63,4 +79,5 @@ def temp(request):
         rest.keyword = kwd_list
         print(rest)
 
+    print(count)
     return render(request, 'foodoctor/index.html')
