@@ -98,7 +98,7 @@
             <div class="box">
                 <img src="https://png.pngtree.com/png-clipart/20230425/original/pngtree-a-bibimbap-bowl-png-image_9101605.png" alt="" width="max-width: 90% height: auto">
                 <br>
-                <a href="#" onclick="location.href='korean_restaurants.html'" class="btn">한식</a>
+                <a href="{% url 'foodoctor:korean_food' %}" class="btn">한식</a>
             </div>
     
             <div class="box">
@@ -564,10 +564,10 @@
 
 
 <!-- custom js file link  -->
-<script src="static/js/script.js"></script>
+<script src="{% static './js/script.js' %}"></script>
 
 <!-- roulette js file link  -->
-<script src="static/js/roulette.js"></script>
+<script src="{% static './js/roulette.js' %}"></script>
 
 
 
