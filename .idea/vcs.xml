@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Opensource-Project-Basic" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/food" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/food/static" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/food/templates/foodoctor" vcs="Git" />
   </component>
 </project>
