@@ -1,0 +1,373 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>충북대 쩝쩝박사</title>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+
+</head>
+<body>
+
+<!-- header section starts -->
+
+<header>
+
+    <section class="flex">
+
+        <img src= "{% static './images/logo.png' %}" width="90px" height="90px"></i> 쩝쩝박사.</imga>
+
+        <nav class="navbar">
+            <a class="active" href="#home">홈</a>
+            <a href="#dishes">카테고리</a>
+
+            <a href="#review">후기</a>
+            <a href="#about">제보</a>
+        </nav>
+
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <i class="fas fa-search" id="search-icon"></i>
+        </div>
+
+    </section>
+
+</header>
+
+<!-- header section ends-->
+
+<!-- search form  -->
+
+<form action="" id="search-form">
+    <input type="search" placeholder="search here..." name="" id="search-box">
+    <label for="search-box" class="fas fa-search"></label>
+    <i class="fas fa-times" id="close"></i>
+</form>
+
+<!-- home section starts  -->
+
+<div class="container">
+
+{#룰렛 만들기#}
+    <section class="home" id="home">
+
+        <div class="swiper home-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide slide">
+                    <div class="content">
+                        <div>
+                          <canvas width="380" height='380'></canvas>
+                          <button onclick="rotate()">룰렛 돌리기</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+<!-- home section ends -->
+
+<!-- category section starts  -->
+
+<div class="container">
+
+    <section class="dishes" id="dishes">
+
+        <h3 class="sub-heading"> 카테고리 </h3>
+        <h1 class="heading"> 오늘 뭐 먹지? </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="https://png.pngtree.com/png-clipart/20230425/original/pngtree-a-bibimbap-bowl-png-image_9101605.png" alt="" width="max-width: 90% height: auto">
+                <br>
+                <a href="{% url 'foodoctor:korean_food' %}" class="btn">한식</a>
+            </div>
+
+            <div class="box">
+                <img src="https://cdn.shopify.com/s/files/1/0585/0785/3956/products/c759fda4fe55a8f2b73777e31b301c8d.png?v=1656914064" alt="" width="max-width: 120% height: auto">
+                <br>
+                <a href="{% url 'foodoctor:chinese_food' %}" class="btn">중식</a>
+            </div>
+
+            <div class="box">
+                <img src="https://dltnswn2121.mycafe24.com/wp-content/uploads/2022/07/slider_iteam.png" alt="" width="max-width: 80% height: auto">
+                <br>
+                <a href="{% url 'foodoctor:japanese_food' %}" class="btn">돈까스·일식</a>
+            </div>
+
+            <div class="box">
+                <img src="http://www.breadnco.kr/wp-content/uploads/2022/05/%EB%8F%8C%EC%B2%B4%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A8%EC%A0%9C%ED%92%88%EB%93%B1%EB%A1%9D%EC%9A%A9.png" alt="" width="max-width: 100% height: auto">
+                <br>
+                <a href="{% url 'foodoctor:cafe_food' %}" class="btn">카페·디저트</a>
+            </div>
+
+            <div class="box">
+                <img src="https://namuya.co.kr/board/data/file/menu/2040648481_KnbaLuCp_d51db689280cb798f095c5916ca165d54db14e7f.png" alt="" width="max-width: 100% height: auto">
+                <br>
+                <a href="{% url 'foodoctor:asian_western_food' %}" class="btn">아시안·양식</a>
+            </div>
+
+            <div class="box">
+                <img src="https://www.pngplay.com/wp-content/uploads/7/Hamburger-Sandwich-PNG-HD-Quality.png" alt="" width="max-width: 100% height: auto">
+                <br>
+                <a href="{% url 'foodoctor:fast_food' %}" class="btn">패스트푸드</a>
+
+            </div>
+
+            <div class="box">
+                <img src="https://cdn.shopify.com/s/files/1/0585/0785/3956/products/9383a6402cbf2028bf5f4feeaafe4b7a.png?v=1656410416" alt="" width="max-width: 100% height: auto">
+                <br>
+                <a href="{% url 'foodoctor:bunsik_food' %}" class="btn">분식</a>
+            </div>
+
+            <div class="box">
+                <img src="https://convenii.com/web/product/big/202212/8f7fed34847bdd7e7a1d64273805ee97.png" alt="" width="max-width: 100% height: auto">
+                <br>
+                <a href="{% url 'foodoctor:meat_food' %}" class="btn">고기 요리</a>
+            </div>
+
+            <div class="box">
+                <img src="https://wonderbites.app/wp-content/uploads/2021/11/burrito-bowl-pork-1.webp" alt="" width="max-width: 100% height: auto">
+                <br>
+                <a href="{% url 'foodoctor:etc_food' %}" class="btn">기타</a>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- dishes section ends -->
+
+
+<!-- board section starts  -->
+
+<div class="container">
+
+    <section class="review" id="review">
+
+        <h3 class="sub-heading">후기</h3>
+        <h1 class="heading"> 우리들의 말, 말, 말</h1>
+
+        <div class="swiper review-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide slide">
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="{% static './images/review1.png' %}" alt="">
+                        <div class="user-info">
+                            <h3>24시 할매국밥</h3>
+                            <h3>오승헌</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>진한 국물이 매력인 순대국집입니다. 다데기가 마음껏 넣을 수 있도록 제공되기 때문에 기호에 맞게 양껏 넣어먹을 수 있어서 좋았어요.</p>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="{% static './images/dish-4.png' %}" alt="">
+                        <div class="user-info">
+                            <h3>피자마루</h3>
+                            <h3>김미형</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+
+                            </div>
+                        </div>
+                    </div>
+                    <p>풍부한 토핑과 두꺼운 도우가 매력인 피자집입니다. 저는 개인적으로 포테이토 피자를 제일 선호합니다!</p>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="{% static './images/review2.png' %}" alt="">
+                        <div class="user-info">
+                            <h3>빽다방</h3>
+                            <h3>신우진</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>일 끝나고 즐기는 달콤쌉살한 커피 한잔이 가끔 떠오를 때가 있습니다.. 그럴때면 방문하는 곳입니다.가격 또한 매우 훌륭해서 마음에 드네요. </p>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="{% static './images/dish-1.png' %}" alt="">
+                        <div class="user-info">
+                            <h3>kfc</h3>
+                            <h3>손의현</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+
+                            </div>
+                        </div>
+                    </div>
+                    <p>가볍게 식사를 때울때 방문하는 곳입니다. 맛있습니다.</p>
+                </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- review section ends -->
+
+
+<!-- about section starts  -->
+
+<div class="container">
+
+    <section class="about" id="about">
+
+        <h3 class="sub-heading"> 제보 </h3>
+        <h1 class="heading"> 문의사항이 있다면 연락주세요 </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="{% static './images/call1.png' %}" alt="">
+            </div>
+
+            <div class="content">
+                <h3>오늘 나의 점심 메뉴는?</h3>
+                <p>저희 쩝쩝박사 팀은 식사시간에 무의미한 시간 낭비를 줄이고 메뉴를 고민하는데 있어 다양성을 주고 동시에 재미도 챙겨보고 싶었습니다. 그리하여 세상에 나오게 된 것이 랜덤 점심 메누 추천 사이트입니다.</p>
+                <p>저희 프로젝트에 미숙한 부분이 많을 수 있으니 작동이 안되거나 오류, 오타가 있다면 [010-1234-5689]로 연락해주시면 감사하겠습니다!</p>
+                <div class="icons-container">
+                    <div class="icons">
+                        <i class="fas fa-headset"></i>
+                        <span>18/5 service</span>
+                    </div>
+                </div>
+                <a href="#" class="btn">상단으로 이동</a>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- about section ends -->
+
+<!-- footer section starts  -->
+
+<div class="container">
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#">erredruin@gmail.com</a>
+                <a href="#">+043-123-4567</a>
+                <a href="#">gimmetype@gmail.com</a>
+                <a href="#">anasbhai@gmail.com</a>
+                <a href="#">Chungju, korea - 22786</a>
+            </div>
+
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="#">https://github.com/SON-HYUN</a>
+                <a href="#">https://github.com/gimmetype</a>
+                <a href="#">https://github.com/shin-woojin</a>
+                <a href="#">https://github.com/Megafin1234</a>
+            </div>
+
+        </div>
+
+        <div class="credit"> copyright @ 2021 by <span>mr. web designer</span> </div>
+
+    </section>
+
+</div>
+
+<!-- footer section ends -->
+
+<!-- loader part  -->
+<!-- <div class="loader-container">
+    <img src="images/loader.gif" alt="">
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+<!-- custom js file link  -->
+<script src="{% static './js/script.js' %}"></script>
+
+<!-- roulette js file link  -->
+<script src="{% static './js/roulette.js' %}"></script>
+
+
+
+</body>
+</html>
