@@ -7,6 +7,7 @@ from djongo import models
 class Menu(models.Model):
     name = models.TextField()
     price = models.IntegerField()
+    price_str = models.TextField()
     img_src = models.URLField()
 
     def __str__(self):
@@ -44,14 +45,15 @@ class Restaurant(models.Model):
         model_container=BusinessHours,
         null=True,
     )
-    posX = models.IntegerField()
-    posY = models.IntegerField()
+    mapx = models.IntegerField()
+    mapy = models.IntegerField()
     category = models.TextField()
     menu = models.ArrayField(
         model_container=Menu,
     )
     keyword = models.ArrayField(
-        model_container=Keyword
+        model_container=Keyword,
+        null=True
     )
     rating = models.DecimalField(max_digits=3, decimal_places=2)
     last_updated = models.DateField(auto_now=True)
