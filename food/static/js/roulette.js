@@ -1,12 +1,14 @@
+// @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
 
 
 const product = [
-  "한식", "중식", "돈까스·일식", "카페·디저트", "아시안·양식", "패스트푸드", "분식", "고기 요리", "기타",
+  "한식", "중식", "돈까스 일식", "카페 디저트", "아시안 양식", "패스트푸드", "분식", "고기 요리", "기타",
 ];
 
-const colors = ["#F6F1F1", "#AFD3E2", "#19A7CE", "#146C94"];
+const colors = ["#F6F1F1", "#F6F1F1", "#F6F1F1", "#F6F1F1", "#F6F1F1", "#F6F1F1",];
 
 const newMake = () => {
     const [cw, ch] = [$c.width / 2, $c.height / 2];
@@ -22,7 +24,7 @@ const newMake = () => {
     }
 
     ctx.fillStyle = "#394867";
-    ctx.font = "18px Pretendard";
+    ctx.font = "18px Jua";
     ctx.textAlign = "center";
 
     for (let i = 0; i < product.length; i++) {

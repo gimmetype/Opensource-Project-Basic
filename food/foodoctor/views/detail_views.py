@@ -5,4 +5,4 @@ from ..models import Restaurant
 
 
 def temp(request):
-    return render(request, 'foodoctor/korean_restaurants.html')
+    return render(request, 'foodoctor/detail.html')
