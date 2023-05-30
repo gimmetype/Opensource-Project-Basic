@@ -171,7 +171,7 @@ header .flex .icons #menu-bars{
 }
 
 #search-form label:hover{
-    color:var(--green);
+    color: #841640;
 }
 
 #search-form #close{
@@ -256,7 +256,7 @@ header .flex .icons #menu-bars{
 
 .dishes .box-container .box .fa-heart:hover,
 .dishes .box-container .box .fa-eye:hover{
-    background: var(--green);
+    background: #444444;
     color:#fff;
 }
 
@@ -292,11 +292,11 @@ header .flex .icons #menu-bars{
 
 .dishes .box-container .box .stars i{
     font-size: 1.7rem;
-    color:var(--green);
+    color:#841640;
 }
 
 .dishes .box-container .box span{
-    color:var(--green);
+    color:#444444;
     font-weight: bolder;
     margin-right: 1rem;
     font-size: 2.5rem;
@@ -581,7 +581,7 @@ header .flex .icons #menu-bars{
 }
 
 .footer .credit span{
-    color:var(--green);
+    color: #841640;
 }
 
 .loader-container{
