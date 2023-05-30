@@ -3,7 +3,7 @@
 
 
 :root{
-    --green:#27ae60;
+    --green:#841640;
     --black:#192a56;
     --light-color:#666;
     --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
@@ -62,7 +62,7 @@ section{
 }
 
 .btn:hover{
-    background: var(--green);
+    background: #ffffff;
     letter-spacing: .1rem;
 }
 
@@ -557,6 +557,7 @@ header .flex .icons #menu-bars{
 }
 
 .footer .box-container .box a{
+    /*text-align: center;*/
     display: block;
     padding:.7rem 0;
     font-size: 1.6rem;
