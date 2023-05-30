@@ -1,4 +1,6 @@
 // @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
 
 const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
@@ -24,7 +26,7 @@ const newMake = () => {
     }
 
     ctx.fillStyle = "#394867";
-    ctx.font = "18px Jua";
+    ctx.font = "18px Do Hyeon";
     ctx.textAlign = "center";
 
     for (let i = 0; i < product.length; i++) {
