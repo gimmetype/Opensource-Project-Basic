@@ -40,6 +40,8 @@ section{
     text-align: center;
     color:var(--green);
     font-size: 2rem;
+    padding-bottom: 1rem;
+
 }
 
 .heading{
@@ -279,6 +281,8 @@ header .flex .icons #menu-bars{
 .dishes .box-container .box img{
     height:17rem;
     margin:1rem 0;
+    border-radius: 0.5rem;
+    object-fit: cover;
 }
 
 .dishes .box-container .box h3{
