@@ -1,6 +1,4 @@
 // @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-
 
 const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
@@ -26,7 +24,7 @@ const newMake = () => {
     }
 
     ctx.fillStyle = "#394867";
-    ctx.font = "18px Do Hyeon";
+    ctx.font = "18px Jua";
     ctx.textAlign = "center";
 
     for (let i = 0; i < product.length; i++) {
@@ -63,8 +61,111 @@ const rotate = () => {
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `1.5s`;
 
-    setTimeout(() => alert(`오늘 ${product[ran]} 어떠신가요?`), 2000);
+    // setTimeout(() => alert(`오늘 ${product[ran]} 어떠신가요?`), 2000);
+    searchAddressToCoordinate('내수동로 130')
   }, 1);
 };
 
 newMake();
+
+var map = new naver.maps.Map("map", {
+  center: new naver.maps.LatLng(36.628583, 127.457583),
+  zoom: 16,
+  mapTypeControl: true
+});
+
+var infoWindow = new naver.maps.InfoWindow({
+  anchorSkew: true
+});
+
+map.setCursor('pointer');
+
+function searchAddressToCoordinate(address) {
+  naver.maps.Service.geocode({
+      query: address
+  }, function(status, response) {
+      if (status === naver.maps.Service.Status.ERROR) {
+          return alert('Something Wrong!');
+      }
+
+      if (response.v2.meta.totalCount === 0) {
+          return alert('totalCount' + response.v2.meta.totalCount);
+      }
+
+      var htmlAddresses = [],
+          item = response.v2.addresses[0],
+          point = new naver.maps.Point(item.x, item.y);
+
+      if (item.roadAddress) {
+          htmlAddresses.push('[도로명 주소] ' + item.roadAddress);
+      }
+
+      if (item.jibunAddress) {
+          htmlAddresses.push('[지번 주소] ' + item.jibunAddress);
+      }
+
+      if (item.englishAddress) {
+          htmlAddresses.push('[영문명 주소] ' + item.englishAddress);
+      }
+
+      marker = new naver.maps.Marker({
+        map: map,
+        position: point
+    });
+
+      contentString = [
+        '<div class="">',
+        '   <h5>'+ address +'</h5>',
+        '   <a href="https://map.naver.com/v5/search/%EC%B6%A9%EB%B6%81%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B7%BC%EC%B2%98%20%EB%A7%9B%EC%A7%91/place/1784557064?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&c=15,0,0,0,dh">'+ '클릭해주세요' +'</a>',
+        '</div>'
+    ].join('');
+
+      infowindow = new naver.maps.InfoWindow({
+      content: contentString,
+      maxWidth: 300,
+      backgroundColor: "#eee",
+      borderColor: "#A4A4A4",
+      borderRadius:"30px",
+      borderWidth: 2,
+      disableAnchor:true,
+      anchorColor: "#A4A4A4",
+      pixelOffset: new naver.maps.Point(10, -10)
+  });
+
+  naver.maps.Event.addListener(marker, "click", function(e) {
+    if (infowindow.getMap()) {
+      infowindow.close();
+    } else {
+      infowindow.open(map, marker);
+    }
+  });
+
+      map.setCenter(point);
+  });
+}
+
+naver.maps.Event.addListener(marker, "click", function(e) {
+  if (infowindow.getMap()) {
+    infowindow.close();
+  } else {
+    infowindow.open(map, marker);
+  }
+});
+
+function hasArea(area) {
+  return !!(area && area.name && area.name !== '');
+}
+
+function hasData(data) {
+  return !!(data && data !== '');
+}
+
+function checkLastString (word, lastString) {
+  return new RegExp(lastString + '$').test(word);
+}
+
+function hasAddition (addition) {
+  return !!(addition && addition.value);
+}
+
+naver.maps.onJSContentLoaded = initGeocoder;

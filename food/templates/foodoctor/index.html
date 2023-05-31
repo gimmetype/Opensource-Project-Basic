@@ -16,6 +16,8 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dzpzsu919v"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dzpzsu919v&submodules=panorama,geocoder"></script>
 
 </head>
 <body>
@@ -62,12 +64,12 @@
 
 <!-- home section starts  -->
 
-<div class="container">
+<div class="container" style="display: flex">
 
 {#룰렛 만들기#}
     <section class="home" id="home">
-
-        <div class="swiper home-slider">
+        <div>
+        <div class="swiper home-slider" style="width: 450px; display: inline-block;">
 
             <div class="swiper-wrapper">
 
@@ -75,16 +77,16 @@
                     <div class="content">
                         <div>
                           <canvas width="380" height='380'></canvas>
-                          <button onclick="rotate()">룰렛 돌리기</button>
+                          <center><button onclick="rotate()">룰렛 돌리기</button></center>
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
-
+        <div id="map" style="width:380px;height:380px; margin-top: 8rem; margin-right: 5rem; display: inline-block;"></div>
+        </div>
     </section>
-
 </div>
 
 <!-- home section ends -->
