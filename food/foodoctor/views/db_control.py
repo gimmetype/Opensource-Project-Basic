@@ -14,6 +14,8 @@ return 은 형변환된 객체를 반환
 ex) type_casting('421', int) -> 421
 type_casting('42~45', int) -> '42~45': str
 '''
+
+
 def type_casting(e, _type):
     try:
         e = _type(e)
@@ -43,27 +45,15 @@ def insert_restaurant_data(request):
     from decimal import Decimal
     import json
 
-    # 프로젝트 루트 폴더 path 얻기
-    '''
-    current_dir = os.path.abspath(__file__)
-    for i in range(2) :
-        current_dir = os.path.dirname(os.path.dirname(current_dir))
-    root_dir = current_dir
-    sys.path.append(root_dir)
-    # 시크릿 키 변수를 담은 .py (.gitignore 에 포함되어야 함)
-    import secret_keys
-
-    client_id = secret_keys.naver_api_client_id
-    client_secret = secret_keys.naver_api_secret_key
-    '''
     path = 'C:/Users/clc26/store_data_modification_test.json'
     with open(path, 'r', encoding='UTF8') as f:
         json_data = json.load(f)
     restaurant_data = json_data['매장정보']
     count = 0
-    for i in range(len(restaurant_data)):
+    for each_restaurant_data in restaurant_data:
+        if len(Restaurant.objects.filter(name=each_restaurant_data['name'])) != 0:
+            continue
         count += 1
-        each_restaurant_data = restaurant_data[i]
         price_list = each_restaurant_data['price']
         price_list = list((map(lambda e: type_casting(e.replace('원', '').replace(',', ''), int), price_list)))
         each_restaurant_data['price'] = price_list
@@ -106,6 +96,45 @@ def insert_restaurant_data(request):
         rest.menu = menu_list
         rest.keyword = kwd_list
         rest.save()
+
+    print(count)
+    return render(request, 'foodoctor/index.html')
+
+
+def refactor_road_address_all(request):
+    import re
+    rest_list = Restaurant.objects.all()
+    road_address_discriminant = re.compile(r"[가-힣]+길 |[가-힣]+로 ")
+    si_re = re.compile(r"[가-힣]+시 ")
+    gu_re = re.compile(r"[0-9가-힣]+구 ")
+    road_re = re.compile(r"[0-9가-힣]+로([0-9]+번가*길)* [0-9]+(-[0-9]+)*")
+    count = 0
+    for each in rest_list:
+        address = each.address
+        if road_address_discriminant.search(address) is None:
+            print(f'{address} 는 지번 주소입니다')
+            continue
+        else:
+            # print(f'{address} 는 도로명 주소입니다')
+            count += 1
+
+        road_address = '충북 '
+        match = si_re.search(address)
+        if match is not None:
+            road_address = road_address + match.group(0)
+        match = gu_re.search(address)
+        if match is not None:
+            road_address = road_address + match.group(0)
+        match = road_re.search(address)
+        if match is not None:
+            road_address = road_address + match.group(0)
+        else:
+            print("no road")
+
+        # print(road_address)
+        # save() 에서 에러 나서 도큐먼트 수정할때 쓸 save 폼을 만들어야함
+        each.road_address = road_address
+        each.save()
 
     print(count)
     return render(request, 'foodoctor/index.html')

@@ -16,6 +16,7 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
+    <script type="text/javascript"> var roulette_request_endpoint = "{% url 'foodoctor:roulette_query' %}" </script>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dzpzsu919v"></script>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dzpzsu919v&submodules=panorama,geocoder"></script>
 
@@ -373,10 +374,10 @@
 
 
 <!-- custom js file link  -->
-<script src="{% static './js/script.js' %}"></script>
+<script defer src="{% static './js/script.js' %}"></script>
 
 <!-- roulette js file link  -->
-<script src="{% static './js/roulette.js' %}"></script>
+<script defer src="{% static './js/roulette.js' %}"></script>
 
 
 

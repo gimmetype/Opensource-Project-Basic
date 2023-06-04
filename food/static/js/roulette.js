@@ -61,8 +61,26 @@ const rotate = () => {
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `1.5s`;
 
+    // 백엔드 endpoint 에 랜덤으로 뽑은 카테고리를 넘겨줘서 도로명 주소를 json 반환받음
+    // json 의 내용은 'address': str(address)
+    var payload = new FormData();
+    payload.append('category', product[ran])
+
+    // roulette_request_endpoint 는 index.html 에 선언되어있음
+    fetch(roulette_request_endpoint, {
+        method: 'POST',
+        body: payload
+    })
+    .then(response => response.json())
+    .then(data => {
+        // 얻은 도로명 주소로 Maps API 에 요청
+        searchAddressToCoordinate(data['address'])
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
     // setTimeout(() => alert(`오늘 ${product[ran]} 어떠신가요?`), 2000);
-    searchAddressToCoordinate('내수동로 130')
   }, 1);
 };
 
